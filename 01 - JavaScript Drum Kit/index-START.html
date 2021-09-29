@@ -58,7 +58,38 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  function playSound(e) {
+    // grab the audio file
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
 
+    // grab the corresponding div element
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+    // if the pressed key corresponds to no audio, stop the function
+    if (!audio) {
+      return;
+    }
+
+    // reset the audio if already playing, then play it
+    audio.currentTime = 0;
+    audio.play();
+
+    // add a yellow box around current playing element
+    key.classList.add("playing");
+  }
+
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') {
+      return;
+    }
+    this.classList.remove('playing');
+  }
+
+  // grab all the playable elements, and cancel their play state
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+  window.addEventListener('keydown', playSound);
 </script>
 
 
