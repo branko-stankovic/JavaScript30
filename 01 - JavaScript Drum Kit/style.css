@@ -1,6 +1,8 @@
 html {
   font-size: 10px;
-  background: url('./background.jpg') bottom center;
+  /* Photo by Shawn Sim on Unsplash */
+  /* https://unsplash.com/@randomisgood */
+  background: url('./shawn-sim-9lfubBqLbRc-unsplash.jpg') bottom center;
   background-size: cover;
 }
 
